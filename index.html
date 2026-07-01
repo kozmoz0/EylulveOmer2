@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eylül ❤️</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,Helvetica,sans-serif;
+scroll-behavior:smooth;
+}
+
+body{
+background:linear-gradient(180deg,#090909,#1d0017,#000);
+color:white;
+overflow-x:hidden;
+}
+
+#login{
+position:fixed;
+width:100%;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:#000;
+z-index:9999;
+}
+
+.login-box{
+width:330px;
+padding:30px;
+border-radius:20px;
+background:rgba(255,255,255,.08);
+backdrop-filter:blur(15px);
+text-align:center;
+box-shadow:0 0 40px rgba(255,0,120,.35);
+}
+
+.login-box h1{
+margin-bottom:20px;
+font-size:28px;
+}
+
+input{
+width:100%;
+padding:14px;
+margin-top:10px;
+border:none;
+border-radius:12px;
+outline:none;
+font-size:16px;
+}
+
+button{
+margin-top:15px;
+padding:14px;
+width:100%;
+border:none;
+border-radius:12px;
+cursor:pointer;
+background:#ff2d75;
+color:white;
+font-size:16px;
+transition:.3s;
+}
+
+button:hover{
+transform:scale(1.05);
+background:#ff4d8d;
+}
+
+#error{
+margin-top:15px;
+color:#ff6b6b;
+font-weight:bold;
+}
+
+#site{
+display:none;
+}
+
+.hero{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:20px;
+}
+
+.hero h1{
+font-size:45px;
+margin-bottom:20px;
+animation:fade 2s;
+}
+
+.hero p{
+font-size:22px;
+line-height:40px;
+max-width:900px;
+}
+
+@keyframes fade{
+from{
+opacity:0;
+transform:translateY(30px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+.gallery{
+padding:70px 20px;
+}
+
+.gallery h2{
+text-align:center;
+font-size:35px;
+margin-bottom:40px;
+}
+
+.photos{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+}
+
+.photos img{
+width:100%;
+height:320px;
+object-fit:cover;
+border-radius:20px;
+transition:.4s;
+box-shadow:0 0 20px rgba(255,255,255,.15);
+cursor:pointer;
+}
+
+.photos img:hover{
+transform:scale(1.05);
+}
+
+.counter{
+padding:80px 20px;
+text-align:center;
+}
+
+.counter h2{
+font-size:36px;
+margin-bottom:25px;
+}
+
+#time{
+font-size:32px;
+font-weight:bold;
+color:#ff9bc4;
+margin-bottom:35px;
+}
+
+#loveBtn{
+width:240px;
+font-size:20px;
+}
+
+#quote{
+margin-top:35px;
+font-size:24px;
+color:#ffd6e8;
+min-height:80px;
+padding:0 20px;
+}
+
+footer{
+padding:50px;
+text-align:center;
+font-size:24px;
+color:#ffc5da;
+}
+
+.heart{
+position:fixed;
+top:-20px;
+color:#ff4f90;
+animation:fall linear infinite;
+pointer-events:none;
+}
+
+@keyframes fall{
+to{
+transform:translateY(110vh);
+}
+}
+</style>
+</head>
+
+<body>
+
+<div id="login">
+<div class="login-box">
+
+<h1>❤️ Hoş Geldin ❤️</h1>
+
+<input type="password" id="password" placeholder="Parolayı Gir" onkeypress="if(event.key==='Enter') login()">
+
+<button onclick="login()">
+Giriş Yap
+</button>
+
+<div id="error"></div>
+
+</div>
+</div>
+
+<div id="site">
+
+<section class="hero">
+
+<div>
+
+<h1>Eylül ❤️</h1>
+
+<p>
+
+Bazı insanlar vardır...
+Hayatından çıkıp gitseler bile,
+kalbinden hiç çıkmazlar.
+
+Sen benim en güzel tesadüfüm,
+en güzel duam,
+en güzel yarım kalan hikâyemsin.
+
+Aradan ne kadar zaman geçerse geçsin,
+ismi aklıma düştüğünde
+kalbim ilk günkü gibi atıyor.
+
+Belki yollarımız ayrıldı...
+Belki artık eskisi gibi değiliz...
+
+Ama bilmeni isterim ki;
+
+<b>Seni hiçbir zaman unutamadım Eylül.</b>
+
+</p>
+
+</div>
+
+</section>
+
+<section class="gallery">
+
+<h2>Bizden Kalanlar ❤️</h2>
+
+<div class="photos">
+
+<img src="https://raw.githubusercontent.com/kozmoz0/EylulveOmer2/main/foto1.jpg" alt="Anı 1">
+<img src="https://raw.githubusercontent.com/kozmoz0/EylulveOmer2/main/foto2.jpg" alt="Anı 2">
+<img src="https://raw.githubusercontent.com/kozmoz0/EylulveOmer2/main/foto3.jpg" alt="Anı 3">
+<img src="https://raw.githubusercontent.com/kozmoz0/EylulveOmer2/main/foto4.jpg" alt="Anı 4">
+<img src="https://raw.githubusercontent.com/kozmoz0/EylulveOmer2/main/foto5.jpg" alt="Anı 5">
+<img src="https://raw.githubusercontent.com/kozmoz0/EylulveOmer2/main/foto6.jpg" alt="Anı 6">
+
+</div>
+
+</section>
+
+<section class="counter">
+
+<h2>
+
+Ne olursa olsun...
+
+Kalbimde kaldığın süre ❤️
+
+</h2>
+
+<div id="time"></div>
+
+<button id="loveBtn">
+
+Tıkla İki Gözüm ❤️
+
+</button>
+
+<div id="quote"></div>
+
+</section>
+
+<footer>
+
+"Bazı insanlar unutulmaz,
+çünkü kalbin en güzel yerine dokunurlar."
+
+</footer>
+
+</div>
+
+<script>
+
+const PASSWORD="01092025";
+
+function login(){
+
+let pass=document.getElementById("password").value;
+
+if(pass===PASSWORD){
+
+document.getElementById("login").style.display="none";
+document.getElementById("site").style.display="block";
+
+}else{
+
+document.getElementById("error").innerHTML="Kalbim kırıldı ❤️";
+document.getElementById("password").value="";
+
+}
+
+}
+
+const start=new Date("2025-09-01T00:00:00");
+
+function timer(){
+
+const now=new Date();
+
+let diff=now-start;
+
+let days=Math.floor(diff/1000/60/60/24);
+
+let hours=Math.floor(diff/1000/60/60)%24;
+
+let minutes=Math.floor(diff/1000/60)%60;
+
+let seconds=Math.floor(diff/1000)%60;
+
+document.getElementById("time").innerHTML=
+
+days+" Gün "+
+hours+" Saat "+
+minutes+" Dakika "+
+seconds+" Saniye";
+
+}
+
+setInterval(timer,1000);
+
+timer();
+
+const quotes=[
+
+"Her şey sende güzeldi. ❤️",
+
+"Gözlerin hâlâ aklımda.",
+
+"Bir gülüşün dünyama bedeldi.",
+
+"İnsan en çok unutamadığını özlermiş.",
+
+"Kalbimin en güzel yerindesin.",
+
+"Sana kızamadım hiç.",
+
+"Sen benim en güzel hikâyemdin.",
+
+"Her şarkıda biraz sen varsın.",
+
+"Geceleri aklıma ilk sen geliyorsun.",
+
+"İyi ki seni tanımışım.",
+
+"Belki döneriz bir gün.",
+
+"Dualarımın en güzel yerindesin.",
+
+"Kalbim hâlâ seni seçiyor.",
+
+"Sen mutlu ol yeter.",
+
+"Bir ömür yetmedi sana."
+
+];
+
+loveBtn.onclick=function(){
+
+let random=Math.floor(Math.random()*quotes.length);
+
+quote.innerHTML=quotes[random];
+
+}
+
+setInterval(()=>{
+
+let heart=document.createElement("div");
+
+heart.className="heart";
+
+heart.innerHTML="❤️";
+
+heart.style.left=Math.random()*100+"%";
+
+heart.style.fontSize=(20+Math.random()*30)+"px";
+
+heart.style.animationDuration=(3+Math.random()*5)+"s";
+
+document.body.appendChild(heart);
+
+setTimeout(()=>{
+
+heart.remove();
+
+},8000);
+
+},350);
+
+</script>
+
+</body>
+</html>
