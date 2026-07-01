@@ -234,6 +234,18 @@ opacity:0.6;
 
 <body>
 
+<script>
+// ===== PAROLA KORUMASI =====
+(function() {
+  const correctPassword = "01.09.2025"; // Parola
+  const password = prompt("Lütfen siteye girmek için parolayı giriniz:");
+  if(password !== correctPassword) {
+    document.body.innerHTML = "<h1 style='text-align:center; margin-top:50vh; color:#ff2d75;'>❌ Parola Hatalı</h1>";
+    throw new Error("Parola hatalı");
+  }
+})();
+</script>
+
 <section class="hero">
 <div>
 <h1>Eylül ❤️</h1>
