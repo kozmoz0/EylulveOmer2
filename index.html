@@ -20,6 +20,98 @@ color:white;
 overflow-x:hidden;
 }
 
+/* Password Protection Styles */
+.password-overlay {
+display:flex;
+justify-content:center;
+align-items:center;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:linear-gradient(180deg,#090909,#1d0017,#000);
+z-index:9999;
+}
+
+.password-container {
+text-align:center;
+background:rgba(0,0,0,.8);
+padding:40px;
+border-radius:20px;
+max-width:500px;
+border:2px solid #ff2d75;
+}
+
+.password-container h1 {
+font-size:32px;
+margin-bottom:20px;
+color:#ff9bc4;
+}
+
+.password-container p {
+font-size:16px;
+margin-bottom:30px;
+color:#ffd6e8;
+}
+
+.password-image {
+width:100%;
+max-width:300px;
+height:250px;
+object-fit:cover;
+border-radius:15px;
+margin-bottom:30px;
+box-shadow:0 0 20px rgba(255,0,120,.5);
+}
+
+.password-input {
+width:100%;
+padding:12px;
+font-size:16px;
+border:2px solid #ff2d75;
+border-radius:8px;
+background:rgba(255,255,255,.1);
+color:white;
+margin-bottom:15px;
+box-sizing:border-box;
+}
+
+.password-input::placeholder {
+color:rgba(255,255,255,.5);
+}
+
+.password-input:focus {
+outline:none;
+background:rgba(255,255,255,.2);
+box-shadow:0 0 15px rgba(255,0,120,.5);
+}
+
+.password-button {
+width:100%;
+padding:12px;
+font-size:18px;
+border:none;
+border-radius:8px;
+background:#ff2d75;
+color:white;
+cursor:pointer;
+transition:.3s;
+font-weight:bold;
+}
+
+.password-button:hover {
+background:#ff4d8d;
+transform:scale(1.02);
+}
+
+.error-message {
+color:#ff4f90;
+font-size:14px;
+margin-bottom:15px;
+min-height:20px;
+}
+
 .hero{
 height:100vh;
 display:flex;
@@ -234,19 +326,19 @@ opacity:0.6;
 
 <body>
 
-<script>
-// ===== PAROLA KORUMASI =====
-(function() {
-  const correctPassword = "01.09.2025"; // Parola
-  const password = prompt("Lütfen siteye girmek için parolayı giriniz:");
-  if(password !== correctPassword) {
-    document.body.innerHTML = "<h1 style='text-align:center; margin-top:50vh; color:#ff2d75;'>❌ Parola Hatalı</h1>";
-    throw new Error("Parola hatalı");
-  }
-})();
-</script>
+<!-- Password Protection Overlay -->
+<div id="passwordOverlay" class="password-overlay">
+<div class="password-container">
+<h1>Eylül ❤️</h1>
+<img id="passwordImage" class="password-image" src="" alt="Anı">
+<p>Lütfen siteye girmek için parolayı giriniz:</p>
+<div class="error-message" id="errorMessage"></div>
+<input type="password" id="passwordInput" class="password-input" placeholder="Parola..." autocomplete="off">
+<button class="password-button" onclick="checkPassword()">Gir</button>
+</div>
+</div>
 
-<section class="hero">
+<section class="hero" style="display:none;">
 <div>
 <h1>Eylül ❤️</h1>
 <p>
@@ -272,7 +364,7 @@ Ama bilmeni isterim ki;
 </div>
 </section>
 
-<section class="gallery">
+<section class="gallery" style="display:none;">
 <h2>Bizden Kalanlar ❤️</h2>
 <div class="photos" id="photoGallery">
 <img src="https://raw.githubusercontent.com/kozmoz0/EylulveOmer2/main/1000079046.jpeg" alt="Anı 1" data-index="0">
@@ -292,18 +384,68 @@ Ama bilmeni isterim ki;
 <button class="modal-nav" id="nextBtn">&#10095;</button>
 </div>
 
-<section class="counter">
+<section class="counter" style="display:none;">
 <h2>Ne olursa olsun... Kalbimde kaldığın süre ❤️</h2>
 <div id="time"></div>
 <button id="loveBtn">Tıkla İki Gözüm ❤️</button>
 <div id="quote"></div>
 </section>
 
-<footer>
+<footer style="display:none;">
 "Bazı insanlar unutulmaz, çünkü kalbin en güzel yerine dokunurlar."
 </footer>
 
 <script>
+
+// Fotoğraf URLs
+const photoURLs = [
+  "https://raw.githubusercontent.com/kozmoz0/EylulveOmer2/main/1000079046.jpeg",
+  "https://raw.githubusercontent.com/kozmoz0/EylulveOmer2/main/173983cb-0a83-4847-9c61-3d2aa156c277.jpeg",
+  "https://raw.githubusercontent.com/kozmoz0/EylulveOmer2/main/19365ac6-b562-4a0e-9f6d-970756eddc5f.jpeg",
+  "https://raw.githubusercontent.com/kozmoz0/EylulveOmer2/main/2a40d8d9-cdea-4f05-a23e-b8e88254d277.jpeg",
+  "https://raw.githubusercontent.com/kozmoz0/EylulveOmer2/main/3f6e0747-aad6-4e75-a1df-9ea680564959.jpeg",
+  "https://raw.githubusercontent.com/kozmoz0/EylulveOmer2/main/60d6d795-bee6-4760-ac4b-bc865acbbf32.jpeg"
+];
+
+// Rastgele fotoğraf seç
+function getRandomPhoto() {
+  return photoURLs[Math.floor(Math.random() * photoURLs.length)];
+}
+
+// Parola görseli yükle
+window.addEventListener('load', function() {
+  document.getElementById('passwordImage').src = getRandomPhoto();
+});
+
+// Parola kontrol
+function checkPassword() {
+  const correctPassword = "01.09.2025";
+  const input = document.getElementById('passwordInput');
+  const errorMessage = document.getElementById('errorMessage');
+  
+  if(input.value === correctPassword) {
+    // Doğru parola
+    document.getElementById('passwordOverlay').style.display = 'none';
+    document.querySelectorAll('section, footer').forEach(el => {
+      if(el.style.display === 'none') {
+        el.style.display = el.classList.contains('hero') ? 'flex' : 'block';
+      }
+    });
+    document.querySelector('footer').style.display = 'block';
+  } else {
+    // Yanlış parola
+    errorMessage.textContent = '❌ Parola Hatalı!';
+    input.value = '';
+    input.focus();
+  }
+}
+
+// Enter tuşu ile giriş
+document.getElementById('passwordInput').addEventListener('keypress', function(e) {
+  if(e.key === 'Enter') {
+    checkPassword();
+  }
+});
 
 // ===== FOTOĞraf GALERİSİ =====
 let currentImageIndex = 0;
